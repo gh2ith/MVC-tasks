@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="~/css/products.css" />
+
+@{
+    ViewData["Title"] = "Products";
+
+    string[] products = {
+        "Water", "Orange Juice", "Coffee",
+        "Sandwich", "Chocolate"
+    };
+}
+
+<main class="products-page">
+    <h1>Products</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in products)
+            {
+                <tr>
+                    <td>@product</td>
+                    <td><span class="badge bg-success">Available</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (products.Length == 0)
+    {
+        <p class="product-message">No products available.</p>
+    }
+    else if (products.Length >= 3)
+    {
+        <p class="product-message">We have enough products.</p>
+    }
+    else
+    {
+        <p class="product-message">We need more products.</p>
+    }
+</main>
+
+@section Scripts {
+    <script>
+        alert("Welcome to the Products Page!");
+    </script>
+}

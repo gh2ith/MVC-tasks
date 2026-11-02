@@ -1,0 +1,22 @@
+body {
+    background-color: #f4f8fb;
+}
+
+.products-page {
+    padding: 2rem;
+}
+
+.products-page h1 {
+    color: #1d3557;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.products-page .table {
+    background-color: #ffffff;
+}
+
+.products-page .table thead th {
+    background-color: #1d3557;
+    color: #ffffff;
+}

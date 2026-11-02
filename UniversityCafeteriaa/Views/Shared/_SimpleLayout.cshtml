@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @{
+            string[] companies = { "Fresh Food Company", "Happy Drinks Company", "Daily Supplies Company" };
+
+            foreach(var company in companies)
+            {
+                <p>@company</p>
+            }
+            if (companies.Length >= 3)
+            {
+                <p>We have enough companies.</p>
+            }
+            else
+            {
+                <p>We need more companies.</p>
+            }   
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>
