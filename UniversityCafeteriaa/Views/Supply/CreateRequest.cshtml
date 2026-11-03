@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Create Request";
+    string[] products = { "Water", "Orange Juice", "Coffee", "Sandwich", "Chocolate" };
+}
+
+<h1>Create Request</h1>
+
+<form asp-controller="Supply" asp-action="SubmitRequest" method="post">
+    <p>
+        <label for="EmployeeName">Employee name:</label><br />
+        <input type="text" id="EmployeeName" name="EmployeeName" required />
+    </p>
+    <p>
+        <label for="ProductName">Product name:</label><br />
+        <select id="ProductName" name="ProductName">
+            @foreach (string product in products)
+            {
+                <option value="@product">@product</option>
+            }
+        </select>
+    </p>
+    <p>
+        <label for="Quantity">Quantity:</label><br />
+        <input type="number" id="Quantity" name="Quantity" min="1" required />
+    </p>
+    <p>
+        <label for="RequiredDate">Required date:</label><br />
+        <input type="date" id="RequiredDate" name="RequiredDate" required />
+    </p>
+    <button type="submit">Submit request</button>
+</form>

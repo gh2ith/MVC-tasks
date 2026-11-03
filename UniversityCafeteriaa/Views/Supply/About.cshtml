@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "About";
+}
+<h1>About</h1>
+@if (TempData["Message"] is string message)
+{
+    <div class="alert alert-success" role="status">@message</div>
+}
+<p>The University Cafeteria Supply Management System helps employees view products, see suppliers, and submit supply request details.</p>
+<p>This exercise uses controller actions and Razor views without a database. Requests are not saved.</p>
+<a asp-action="CreateRequest">Create another request</a>

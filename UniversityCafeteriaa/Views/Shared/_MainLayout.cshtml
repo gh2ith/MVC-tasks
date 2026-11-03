@@ -1,14 +1,32 @@
-﻿<!DOCTYPE html>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - University Cafeteria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    @RenderSection("Scripts", required: false)
-    <div>
+    <header class="bg-light p-3">
+        <h2>University Cafeteria</h2>
+        <nav>
+            <a asp-controller="Supply" asp-action="Index">Home</a> |
+            <a asp-controller="Supply" asp-action="Products">Products</a> |
+            <a asp-controller="Supply" asp-action="Suppliers">Suppliers</a> |
+            <a asp-controller="Supply" asp-action="CreateRequest">Create Request</a> |
+            <a asp-controller="Supply" asp-action="About">About</a>
+        </nav>
+    </header>
+
+    <main class="container my-4">
         @RenderBody()
-    </div>
+    </main>
+
+    <footer class="container my-4">
+        <p>University Cafeteria Supply Management System</p>
+        <a asp-controller="Cafeteria" asp-action="Index">Cafeteria pages</a>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

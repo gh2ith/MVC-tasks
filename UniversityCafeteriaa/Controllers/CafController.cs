@@ -8,22 +8,22 @@ namespace UniversityCafeteriaa.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Cafeteria");
         }
 
         public IActionResult Products()
         {
-            return View();
+            return RedirectToAction("Products", "Cafeteria");
         }
 
         public IActionResult Suppliers()
         {
-            return View();
+            return RedirectToAction("Suppliers", "Cafeteria");
         }
 
         public IActionResult SupplyStatus()
         {
-            return View();
+            return RedirectToAction("SupplyStatus", "Cafeteria");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -33,3 +33,4 @@ namespace UniversityCafeteriaa.Controllers
         }
     }
 }
+

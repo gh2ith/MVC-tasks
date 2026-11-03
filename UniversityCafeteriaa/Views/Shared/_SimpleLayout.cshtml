@@ -1,29 +1,20 @@
-﻿<!DOCTYPE html>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - University Cafeteria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 <body>
-    <div>
-        @{
-            string[] companies = { "Fresh Food Company", "Happy Drinks Company", "Daily Supplies Company" };
-
-            foreach(var company in companies)
-            {
-                <p>@company</p>
-            }
-            if (companies.Length >= 3)
-            {
-                <p>We have enough companies.</p>
-            }
-            else
-            {
-                <p>We need more companies.</p>
-            }   
-        }
+    <header class="container py-3">
+        <p class="h4">University Cafeteria</p>
+    </header>
+    <main class="container pb-4">
         @RenderBody()
-    </div>
+    </main>
+    <footer class="container py-3 border-top">
+        <p>University Cafeteria Supply Management System</p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Check Quantity";
+}
+
+<h1>Check Quantity</h1>
+<form asp-action="CheckQuantity" method="get">
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" value="@ViewBag.Quantity" required />
+    <button type="submit">Check quantity</button>
+</form>
+<p>@ViewBag.Message</p>

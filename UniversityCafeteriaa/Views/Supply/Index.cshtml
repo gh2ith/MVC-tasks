@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>University Cafeteria</h1>
+<h2>Product categories</h2>
+<ul>
+    @foreach (string category in ViewBag.Categories)
+    {
+        <li>@category</li>
+    }
+</ul>
+
+<p><a asp-action="CreateRequest">Create request</a></p>
+<p><a asp-action="CheckQuantity">Check quantity</a></p>

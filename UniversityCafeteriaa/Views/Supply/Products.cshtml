@@ -1,0 +1,14 @@
+@{
+    string[] products = (string[])ViewData["Products"]!;
+}
+
+<h1>@ViewData["Title"]</h1>
+<p>Manager: @ViewData["ManagerName"]</p>
+<p>Number of products: @ViewData["NumberOfProducts"]</p>
+
+@foreach (string product in products)
+{
+    <div class="card bg-light border-0 mb-2">
+        <div class="card-body">@product</div>
+    </div>
+}
