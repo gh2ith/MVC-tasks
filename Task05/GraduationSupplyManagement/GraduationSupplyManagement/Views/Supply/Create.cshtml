@@ -1,0 +1,68 @@
+@model List<GraduationSupplyManagement.Models.Offer>
+@{
+    ViewData["Title"] = "Create Supply Request";
+    var selectedIds = (List<int>)ViewBag.SelectedIds;
+}
+
+<h1>Create Supply Request</h1>
+<p>Choose one offer from each category. Selecting another offer replaces your previous choice in that category.</p>
+
+@if (TempData["Error"] != null)
+{
+    <p class="text-danger" role="alert">@TempData["Error"]</p>
+}
+@if (TempData["Message"] != null)
+{
+    <p role="status">@TempData["Message"]</p>
+}
+<p><strong>@ViewBag.SelectedCount of 3 categories selected</strong></p>
+@if (ViewBag.LastSupplier != null)
+{
+    <p class="text-secondary">Last selected supplier: @ViewBag.LastSupplier</p>
+}
+
+@foreach (var category in Model.GroupBy(offer => offer.CategoryName))
+{
+    <section class="mb-5" aria-label="@category.Key">
+        <h2>@category.Key</h2>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <caption class="visually-hidden">Available offers for @category.Key</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Supplier</th>
+                        <th scope="col">Offer</th>
+                        <th scope="col" class="text-end">Quantity</th>
+                        <th scope="col" class="text-end">Unit price</th>
+                        <th scope="col">Selection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var offer in category)
+                    {
+                        bool isSelected = selectedIds.Contains(offer.Id);
+                        <tr class="@(isSelected ? "table-active" : "")">
+                            <td>@offer.SupplierName</td>
+                            <td>@offer.OfferName</td>
+                            <td class="text-end">@offer.Quantity</td>
+                            <td class="text-end text-nowrap">@offer.UnitPrice.ToString("0.00") JD</td>
+                            <td>
+                                <form action="@Url.Action("Select", "Supply")" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="offerId" value="@offer.Id" />
+                                    <button type="submit" class="btn btn-outline-dark"
+                                            aria-label="Select @offer.OfferName from @offer.SupplierName"
+                                            aria-pressed="@(isSelected ? "true" : "false")">
+                                        @(isSelected ? "Selected" : "Select")
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+}
+
+<a class="btn btn-dark" href="@Url.Action("Review", "Supply")">Review request</a>

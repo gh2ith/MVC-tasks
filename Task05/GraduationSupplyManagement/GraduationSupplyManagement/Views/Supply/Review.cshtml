@@ -1,0 +1,48 @@
+@model List<GraduationSupplyManagement.Models.Offer>
+@{
+    ViewData["Title"] = "Review Supply Request";
+}
+
+<h1>Review Supply Request</h1>
+<p>Your request contains one offer from each category.</p>
+
+<div class="table-responsive">
+    <table class="table align-middle">
+        <caption class="visually-hidden">Selected graduation supply offers</caption>
+        <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Supplier</th>
+                <th scope="col">Offer</th>
+                <th scope="col" class="text-end">Quantity</th>
+                <th scope="col" class="text-end">Unit price</th>
+                <th scope="col" class="text-end">Offer total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in Model)
+            {
+                <tr>
+                    <td>@offer.CategoryName</td>
+                    <td>@offer.SupplierName</td>
+                    <td>@offer.OfferName</td>
+                    <td class="text-end">@offer.Quantity</td>
+                    <td class="text-end text-nowrap">@offer.UnitPrice.ToString("0.00") JD</td>
+                    <td class="text-end text-nowrap">@offer.TotalPrice.ToString("0.00") JD</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<section class="request-totals my-4" aria-labelledby="totals-heading">
+    <h2 id="totals-heading">Request total</h2>
+    <dl>
+        <div><dt>Total before discount</dt><dd id="total">@ViewBag.Total.ToString("0.00") JD</dd></div>
+        <div><dt>Discount percentage</dt><dd id="discount-percentage">@ViewBag.DiscountPercentage.ToString("0")%</dd></div>
+        <div><dt>Discount amount</dt><dd id="discount-amount">@ViewBag.DiscountAmount.ToString("0.00") JD</dd></div>
+        <div class="fw-semibold"><dt>Final total</dt><dd id="final-total">@ViewBag.FinalTotal.ToString("0.00") JD</dd></div>
+    </dl>
+</section>
+
+<a class="btn btn-dark" href="@Url.Action("Create", "Supply")">Change selections</a>

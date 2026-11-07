@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Graduation Supplies</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <a class="visually-hidden-focusable" href="#main-content">Skip to content</a>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light mb-4" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Create", "Supply")">Graduation Supplies</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation"
+                        aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="main-navigation" class="navbar-collapse collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Create", "Supply")">Create Supply Request</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Review", "Supply")">Review</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("About", "Supply")">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="main-content" class="container pb-5">
+        @RenderBody()
+    </main>
+    <footer class="container py-4 text-secondary">
+        Orange Coding Academy
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
