@@ -1,0 +1,29 @@
+@model IEnumerable<Category>
+@{ ViewData["Title"] = "Categories"; }
+<h1>Categories</h1>
+<p>@Html.ActionLink("Add category", "Create", null, new { @class = "button" })</p>
+@if (!Model.Any())
+{
+    <p>No categories yet. Add one to get started.</p>
+}
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Description)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

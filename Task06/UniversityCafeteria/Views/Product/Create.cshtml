@@ -1,0 +1,38 @@
+@model Product
+@{ ViewData["Title"] = "Add product"; }
+<h1>Add product</h1>
+<p>Add a category and supplier before adding a product.</p>
+@using (Html.BeginForm("Create", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="field">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { type = "text" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    <div class="field">
+        @Html.LabelFor(model => model.Price)
+        @Html.TextBoxFor(model => model.Price, new { type = "number", min = "0.01", step = "0.01" })
+        @Html.ValidationMessageFor(model => model.Price)
+    </div>
+    <div class="field">
+        @Html.LabelFor(model => model.Quantity)
+        @Html.TextBoxFor(model => model.Quantity, new { type = "number", min = "0", step = "1" })
+        @Html.ValidationMessageFor(model => model.Quantity)
+    </div>
+    <div class="field">
+        @Html.LabelFor(model => model.CategoryId)
+        @Html.DropDownListFor(model => model.CategoryId, (SelectList)ViewBag.Categories, "Select a category")
+        @Html.ValidationMessageFor(model => model.CategoryId)
+    </div>
+    <div class="field">
+        @Html.LabelFor(model => model.SupplierId)
+        @Html.DropDownListFor(model => model.SupplierId, (SelectList)ViewBag.Suppliers, "Select a supplier")
+        @Html.ValidationMessageFor(model => model.SupplierId)
+    </div>
+    <div class="actions">
+        <button type="submit">Save product</button>
+        @Html.ActionLink("Cancel", "Index")
+    </div>
+}

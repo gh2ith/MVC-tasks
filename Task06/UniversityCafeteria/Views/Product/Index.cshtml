@@ -1,0 +1,36 @@
+@model IEnumerable<Product>
+@{ ViewData["Title"] = "Products"; }
+<h1>Products</h1>
+<p>@Html.ActionLink("Add product", "Create", null, new { @class = "button" })</p>
+@if (!Model.Any())
+{
+    <p>No products yet. Add one to get started.</p>
+}
+<div class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Id)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Price)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Quantity)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.CategoryId)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.SupplierId)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                <td>@Html.DisplayFor(modelItem => item.Category!.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Supplier!.Name)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
