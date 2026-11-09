@@ -1,0 +1,55 @@
+@model IEnumerable<Product>
+
+<h1>Products</h1>
+
+<a href="@Url.Action("Create", "Product")">Add New</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Supplier</th>
+            <th>Stock</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Category?.Name)</td>
+                <td>@(item.Supplier?.Name)</td>
+                <td>
+                    @if (item.Quantity < 5)
+                    {
+                        <span>Low Stock</span>
+                    }
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Product", new { id = item.Id })">Edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Product", new { id = item.Id })">Details</a>
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("Delete", "Product")">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

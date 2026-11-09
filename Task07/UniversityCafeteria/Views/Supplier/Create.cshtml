@@ -1,0 +1,27 @@
+@model Supplier
+
+<h1>Create Supplier</h1>
+
+<form method="post" action="@Url.Action("Create", "Supplier")">
+    @Html.ValidationSummary()
+
+    <label>Name</label>
+    <input type="text" name="Name" />
+    <br />
+
+    <label>Phone</label>
+    <input type="text" name="Phone" />
+    <br />
+
+    <label>Email</label>
+    <input type="text" name="Email" />
+    <br />
+
+    <label>Address</label>
+    <input type="text" name="address" />
+    <br />
+
+    <button type="submit">Create</button>
+</form>
+
+<a href="@Url.Action("Index", "Supplier")">Back</a>

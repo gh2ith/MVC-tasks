@@ -1,0 +1,35 @@
+@model Product
+
+<h1>Create Product</h1>
+
+<form method="post" action="@Url.Action("Create", "Product")">
+    @Html.ValidationSummary()
+
+    <label>Name</label>
+    <input type="text" name="Name" />
+    <br />
+
+    <label>Description</label>
+    <input type="text" name="Description" />
+    <br />
+
+    <label>Price</label>
+    <input type="text" name="Price" />
+    <br />
+
+    <label>Quantity</label>
+    <input type="text" name="Quantity" />
+    <br />
+
+    <label>Category</label>
+    @Html.DropDownListFor(x => x.CategoryId, (SelectList)ViewBag.Categories)
+    <br />
+
+    <label>Supplier</label>
+    @Html.DropDownListFor(x => x.SupplierId, (SelectList)ViewBag.Suppliers)
+    <br />
+
+    <button type="submit">Create</button>
+</form>
+
+<a href="@Url.Action("Index", "Product")">Back</a>

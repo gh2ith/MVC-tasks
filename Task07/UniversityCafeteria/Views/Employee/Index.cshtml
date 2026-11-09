@@ -1,0 +1,50 @@
+@model IEnumerable<Employee>
+
+<h1>Employees</h1>
+
+<a href="@Url.Action("Create", "Employee")">Add New</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Hire Date</th>
+            <th>Orders Count</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FullName</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.Position</td>
+                <td>@item.Salary</td>
+                <td>@item.HireDate</td>
+                <td>@item.Orders.Count</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Employee", new { id = item.Id })">Edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Employee", new { id = item.Id })">Details</a>
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("Delete", "Employee")">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

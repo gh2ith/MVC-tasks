@@ -1,0 +1,46 @@
+@model IEnumerable<Supplier>
+
+<h1>Suppliers</h1>
+
+<a href="@Url.Action("Create", "Supplier")">Add New</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Products Count</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Phone</td>
+                <td>@item.Email</td>
+                <td>@item.address</td>
+                <td>@item.Products.Count</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Supplier", new { id = item.Id })">Edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Supplier", new { id = item.Id })">Details</a>
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("Delete", "Supplier")">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,7 @@
+body { margin: 24px; font-family: Arial, sans-serif; }
+nav { margin: 16px 0; }
+nav a { margin-right: 16px; }
+table { border-collapse: collapse; }
+th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
+.field { margin-bottom: 12px; }
+label { display: block; }

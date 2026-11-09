@@ -1,0 +1,42 @@
+@model IEnumerable<Category>
+
+<h1>Categories</h1>
+
+<a href="@Url.Action("Create", "Category")">Add New</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Products Count</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Products.Count</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Category", new { id = item.Id })">Edit</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Category", new { id = item.Id })">Details</a>
+                </td>
+                <td>
+                    <form method="post" action="@Url.Action("Delete", "Category")">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

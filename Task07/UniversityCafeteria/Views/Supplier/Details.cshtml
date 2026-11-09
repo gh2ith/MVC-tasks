@@ -1,0 +1,12 @@
+@model Supplier
+
+<h1>Supplier Details</h1>
+
+<p>ID: @Model.Id</p>
+<p>Name: @Model.Name</p>
+<p>Phone: @Model.Phone</p>
+<p>Email: @Model.Email</p>
+<p>Address: @Model.address</p>
+<p>Products Count: @Model.Products.Count</p>
+
+<a href="@Url.Action("Index", "Supplier")">Back</a>

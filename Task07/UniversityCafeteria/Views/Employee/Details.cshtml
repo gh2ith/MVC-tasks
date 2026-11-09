@@ -1,0 +1,14 @@
+@model Employee
+
+<h1>Employee Details</h1>
+
+<p>ID: @Model.Id</p>
+<p>Full Name: @Model.FullName</p>
+<p>Phone: @Model.Phone</p>
+<p>Email: @Model.Email</p>
+<p>Position: @Model.Position</p>
+<p>Salary: @Model.Salary</p>
+<p>Hire Date: @Model.HireDate</p>
+<p>Orders Count: @Model.Orders.Count</p>
+
+<a href="@Url.Action("Index", "Employee")">Back</a>

@@ -1,0 +1,18 @@
+@model Product
+
+<h1>Product Details</h1>
+
+<p>ID: @Model.Id</p>
+<p>Name: @Model.Name</p>
+<p>Description: @Model.Description</p>
+<p>Price: @Model.Price</p>
+<p>Quantity: @Model.Quantity</p>
+<p>Category: @(Model.Category?.Name)</p>
+<p>Supplier: @(Model.Supplier?.Name)</p>
+
+@if (Model.Quantity < 5)
+{
+    <p>Low Stock</p>
+}
+
+<a href="@Url.Action("Index", "Product")">Back</a>

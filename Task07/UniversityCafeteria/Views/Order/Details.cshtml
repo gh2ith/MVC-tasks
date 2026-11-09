@@ -1,0 +1,12 @@
+@model Order
+
+<h1>Order Details</h1>
+
+<p>ID: @Model.Id</p>
+<p>Customer Name: @Model.CustomerName</p>
+<p>Order Date: @Model.OrderDate</p>
+<p>Total Price: @Model.TotalPrice</p>
+<p>Status: @Model.Status</p>
+<p>Employee: @(Model.Employee?.FullName)</p>
+
+<a href="@Url.Action("Index", "Order")">Back</a>
