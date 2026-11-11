@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Cafeteria Supplies</h1>
+
+@if (User.Identity?.IsAuthenticated != true)
+{
+    <p>Sign in or register to browse products and submit a supply request.</p>
+}
+else if (User.IsInRole("SuperAdmin"))
+{
+    <p>Review user accounts and assign roles from Manage Users.</p>
+}
+else if (User.IsInRole("Admin"))
+{
+    <p>Update the product catalog and review submitted requests.</p>
+}
+else
+{
+    <p>Browse the product catalog, submit a request, or check the status of an existing request.</p>
+}

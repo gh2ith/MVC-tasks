@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] | Cafeteria Supplies</title>
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <li><a asp-controller="Product" asp-action="Index">Product Catalog</a></li>
+                    <li><a asp-controller="SupplyRequest" asp-action="Index">Requests</a></li>
+                    <li><a asp-controller="SupplyRequest" asp-action="Create">New Request</a></li>
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <li><a asp-controller="Admin" asp-action="Index">Manage Users</a></li>
+                    }
+                }
+                else
+                {
+                    <li><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+                    <li><a asp-controller="Account" asp-action="Register">Register</a></li>
+                }
+            </ul>
+        </nav>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <p>Signed in as @User.Identity.Name</p>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                <button type="submit">Sign Out</button>
+            </form>
+        }
+    </header>
+    <hr />
+    <main>
+        @if (TempData["Error"] is string error)
+        {
+            <p role="alert">@error</p>
+        }
+        @RenderBody()
+    </main>
+</body>
+</html>
